@@ -2,3 +2,5 @@ node_modules
 typings
 .DS_Store
 .vscode
+app/**/*.js
+app/**/*.js.map
