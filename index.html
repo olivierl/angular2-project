@@ -1,9 +1,12 @@
 <html>
 
   <head>
-    <title>Angular 2 QuickStart</title>
+    <base href="/">
+    
+    <title>Angular 2 Project</title>
 
     <link rel="stylesheet" href="assets/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="assets/stylesheets/app.css">
 
     <!-- 1. Load libraries -->
     <!-- IE required polyfills, in this exact order -->
@@ -14,6 +17,7 @@
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
 
     <!-- 2. Configure SystemJS -->
     <script>
@@ -28,7 +32,6 @@
       System.import('app/boot')
             .then(null, console.error.bind(console));
     </script>
-
   </head>
 
   <!-- 3. Display the application -->
