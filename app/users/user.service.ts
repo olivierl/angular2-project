@@ -13,6 +13,10 @@ export class UserService {
     return this._http.get(this._baseUrl).map(res => res.json());
   }
   
+  getUser(id) {
+    return this._http.get(this._baseUrl + '/' + id).map(res => res.json());
+  }
+  
   addUser(user) {
     return this._http.post(this._baseUrl, JSON.stringify(user)).map(res => res.json());
   }

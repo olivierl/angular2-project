@@ -17,7 +17,11 @@
     <tr *ngFor="#user of users">
       <td>{{user.name}}</td>
       <td>{{user.email}}</td>
-      <td><i class="fa fa-pencil"></i></td>
+      <td>
+        <a [routerLink]="['EditUser', {id: user.id}]"> 
+          <i class="fa fa-pencil"></i>
+        </a>
+      </td>
       <td><i class="fa fa-trash"></i></td>
     </tr>
   </tbody>
