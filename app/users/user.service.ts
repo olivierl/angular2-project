@@ -13,11 +13,19 @@ export class UserService {
     return this._http.get(this._baseUrl).map(res => res.json());
   }
   
-  getUser(id) {
-    return this._http.get(this._baseUrl + '/' + id).map(res => res.json());
+  getUser(userId) {
+    return this._http.get(this.getUserUrl(userId)).map(res => res.json());
   }
   
   addUser(user) {
     return this._http.post(this._baseUrl, JSON.stringify(user)).map(res => res.json());
   }
+  
+  updateUser(user) {
+    return this._http.put(this.getUserUrl(user.id), JSON.stringify(user)).map(res => res.json());
+  }
+  
+  private getUserUrl(userId){
+		return this._baseUrl + '/' + userId;
+	}
 }
