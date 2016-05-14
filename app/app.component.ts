@@ -7,26 +7,26 @@ import {UsersComponent} from './users/users.component';
 import {UserFormComponent} from './users/user-form.component';
 import {PostsComponent} from './posts/posts.component';
 
-@RouteConfig([ 
-    { path: '/', name: 'Home', component: HomeComponent }, 
-    { path: '/users', name: 'Users', component: UsersComponent },
-    { path: '/users/new', name: 'NewUser', component: UserFormComponent },
-    { path: '/posts', name: 'Posts', component: PostsComponent }, 
-    { path: '/*other', name: 'Other', redirectTo: ['Home'] } 
-]) 
+@RouteConfig([
+  { path: '/', name: 'Home', component: HomeComponent },
+  { path: '/users', name: 'Users', component: UsersComponent },
+  { path: '/users/new', name: 'NewUser', component: UserFormComponent },
+  { path: '/posts', name: 'Posts', component: PostsComponent },
+  { path: '/*other', name: 'Other', redirectTo: ['Home'] }
+])
 @Component({
-    selector: 'my-app',
-    template: `
-        <navbar></navbar>
-        <div class="container">
-            <router-outlet></router-outlet>
-        </div>
-    `,
-    styles: [`
-        .container {
-            margin-top: 70px;
-        }
+  selector: 'my-app',
+  template: `
+    <navbar></navbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  `,
+  styles: [`
+    .container {
+      margin-top: 70px;
+    }
     `],
     directives: [NavbarComponent, ROUTER_DIRECTIVES]
-})
-export class AppComponent { }
+  })
+  export class AppComponent { }
