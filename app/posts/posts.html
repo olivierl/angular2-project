@@ -1,0 +1,21 @@
+<h1>Posts</h1>
+<div class="row">
+  <div class="col-md-6">
+    <spinner [visible]="isLoading"></spinner>
+    <ul class="list-group posts">
+      <li *ngFor="#post of posts" class="list-group-item" [class.active]="selectedPost == post" (click)="select(post)">
+        {{ post.title }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default" *ngIf="selectedPost">
+      <div class="panel-heading">
+        {{ selectedPost.title }}
+      </div>
+      <div class="panel-body">
+        {{ selectedPost.body }}
+      </div>
+    </div>
+  </div>
+</div>
