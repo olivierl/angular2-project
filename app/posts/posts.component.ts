@@ -4,6 +4,7 @@ import {PostService} from './post.service';
 import {UserService} from '../users/user.service';
 
 import {SpinnerComponent} from '../shared/spinner.component';
+import {PaginationComponent} from '../shared/pagination.component';
 
 @Component({
     selector: 'posts',
@@ -20,16 +21,20 @@ import {SpinnerComponent} from '../shared/spinner.component';
         }
     `],
     providers: [PostService, UserService],
-    directives: [SpinnerComponent]
+    directives: [SpinnerComponent, PaginationComponent]
 })
 export class PostsComponent implements OnInit {
     posts = [];
+    pagedPosts = [];
     users = [];
-    selectedPost;
     postsLoading;
     commentsLoading;
+    selectedPost;
+    pageSize = 10;
 
-    constructor(private _postService: PostService, private _userService: UserService) {
+    constructor(
+        private _postService: PostService,
+        private _userService: UserService) {
     }
 
     ngOnInit() {
@@ -46,7 +51,10 @@ export class PostsComponent implements OnInit {
         this.postsLoading = true;
         this._postService.getPosts(filter)
             .subscribe(
-                posts => this.posts = posts,
+                posts => {
+                    this.posts = posts;
+                    this.pagedPosts = _.take(this.posts, this.pageSize);
+                },
                 null,
                 () => this.postsLoading = false);
     }
@@ -66,4 +74,9 @@ export class PostsComponent implements OnInit {
                 null,
                 () => this.commentsLoading = false);
     }
+    
+    onPageChanged(page) {
+        var startIndex = (page - 1) * this.pageSize;
+        this.pagedPosts = _.take(_.rest(this.posts, startIndex), this.pageSize);
+	}
 }

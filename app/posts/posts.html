@@ -7,9 +7,10 @@
           {{ user.name }}
       </option>
     </select>
+    <pagination [items]="posts" (page-changed)="onPageChanged($event)"></pagination>
     <spinner [visible]="postsLoading"></spinner>
     <ul class="list-group posts">
-      <li *ngFor="#post of posts" class="list-group-item" [class.active]="selectedPost == post" (click)="select(post)">
+      <li *ngFor="#post of pagedPosts" class="list-group-item" [class.active]="selectedPost == post" (click)="select(post)">
         {{ post.title }}
       </li>
     </ul>
