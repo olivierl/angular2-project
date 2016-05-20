@@ -1,5 +1,5 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component} from '@angular/core';
+import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 import {NavbarComponent} from './navbar/navbar.component';
 import {HomeComponent} from './home/home.component';
@@ -30,6 +30,6 @@ import {NotFoundComponent} from './not-found.component';
       margin-top: 70px;
     }
     `],
-    directives: [NavbarComponent, ROUTER_DIRECTIVES]
-  })
-  export class AppComponent { }
+  directives: [NavbarComponent, ROUTER_DIRECTIVES]
+})
+export class AppComponent { }
